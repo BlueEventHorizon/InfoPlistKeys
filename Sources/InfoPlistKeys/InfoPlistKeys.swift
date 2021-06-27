@@ -110,6 +110,12 @@ public enum InfoPlistKeys: String, Codable, CaseIterable, CustomStringConvertibl
 
     // FaceIDの利用
     case faceIDUsageDescription = "NSFaceIDUsageDescription"
+    
+    // ローカルネットワークの利用
+    case localNetworkUsageDescription = "NSLocalNetworkUsageDescription"
+    
+    // ボンジュールの利用
+    case bonjourServices = "NSBonjourServices"
 
     // MARK: - CustomStringConvertible
 
