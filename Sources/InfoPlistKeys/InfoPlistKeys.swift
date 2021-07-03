@@ -116,7 +116,17 @@ public enum InfoPlistKeys: String, Codable, CaseIterable, CustomStringConvertibl
     
     // ボンジュールの利用
     case bonjourServices = "NSBonjourServices"
+    
+    // 近接デバイスとの対話セッションを開始するためのユーザー許可の1回限りの要求。
+    // ⚠️ Deprecated only for iOS 14
+    // https://developer.apple.com/documentation/bundleresources/information_property_list/nsnearbyinteractionallowonceusagedescription
+    case nearbyInteractionAllowOnceUsageDescription = "NSNearbyInteractionAllowOnceUsageDescription"
 
+    // 近接デバイスとの対話セッションを開始するためのユーザー許可の要求。
+    // After iOS15
+    // https://developer.apple.com/documentation/bundleresources/information_property_list/nsnearbyinteractionusagedescription
+    case nearbyInteractionUsageDescription = "NSNearbyInteractionUsageDescription"
+    
     // MARK: - CustomStringConvertible
 
     public var description: String {
