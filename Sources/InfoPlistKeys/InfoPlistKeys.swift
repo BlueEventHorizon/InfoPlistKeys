@@ -11,7 +11,6 @@ import Foundation
 // https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 
 public enum InfoPlistKeys: String, Codable, CaseIterable, CustomStringConvertible {
-
     // Bundle Identifier
     case identifier = "CFBundleIdentifier"
 
@@ -110,13 +109,13 @@ public enum InfoPlistKeys: String, Codable, CaseIterable, CustomStringConvertibl
 
     // FaceIDの利用
     case faceIDUsageDescription = "NSFaceIDUsageDescription"
-    
+
     // ローカルネットワークの利用
     case localNetworkUsageDescription = "NSLocalNetworkUsageDescription"
-    
+
     // ボンジュールの利用
     case bonjourServices = "NSBonjourServices"
-    
+
     // 近接デバイスとの対話セッションを開始するためのユーザー許可の1回限りの要求。
     // ⚠️ Deprecated only for iOS 14
     // https://developer.apple.com/documentation/bundleresources/information_property_list/nsnearbyinteractionallowonceusagedescription
@@ -126,7 +125,7 @@ public enum InfoPlistKeys: String, Codable, CaseIterable, CustomStringConvertibl
     // After iOS15
     // https://developer.apple.com/documentation/bundleresources/information_property_list/nsnearbyinteractionusagedescription
     case nearbyInteractionUsageDescription = "NSNearbyInteractionUsageDescription"
-    
+
     // MARK: - CustomStringConvertible
 
     public var description: String {
@@ -134,35 +133,32 @@ public enum InfoPlistKeys: String, Codable, CaseIterable, CustomStringConvertibl
     }
 
     public func check() -> Bool {
-
         let result = Bundle.main.object(forInfoDictionaryKey: self.description)
         return result != nil
     }
 
     public func getValue<T>() -> T? {
-
         let result = Bundle.main.object(forInfoDictionaryKey: self.description) as? T
         // let result = InfoPlistChecker.word(for: self)
-        
+
         switch self {
-        case .URLTypes:
-            guard result is [[String: Any]]? else {
-                assertionFailure("型が違います")
+            case .URLTypes:
+                guard result is [[String: Any]]? else {
+                    assertionFailure("型が違います")
+                    return result
+                }
                 return result
-            }
-            return result
-            
-        case .applicationQueriesSchemes:
-            guard result is [String]? else {
-                assertionFailure("型が違います")
+
+            case .applicationQueriesSchemes:
+                guard result is [String]? else {
+                    assertionFailure("型が違います")
+                    return result
+                }
                 return result
-            }
-            return result
-            
-        default:
-            //
-            return result
+
+            default:
+                //
+                return result
         }
     }
 }
-

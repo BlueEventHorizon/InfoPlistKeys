@@ -1,8 +1,6 @@
-    import XCTest
-    @testable import InfoPlistKeys
+@testable import InfoPlistKeys
+import XCTest
 
-    final class InfoPlistKeysTests: XCTestCase {
-        func testExample() {
-
-        }
-    }
+final class InfoPlistKeysTests: XCTestCase {
+    func testExample() {}
+}
