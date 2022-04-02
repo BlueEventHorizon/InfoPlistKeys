@@ -1,9 +1,9 @@
 //
 //  InfoPlistKeys.swift
-//  BwTools
+//  BwCore
 //
-//  Created by Katsuhiko Terada on 2021/03/11.
-//  Copyright © 2021 beowulf-tech. All rights reserved.
+//  Created by k2moons on 2021/03/11.
+//  Copyright © 2021 k2moons. All rights reserved.
 //
 
 import Foundation
@@ -49,79 +49,102 @@ public enum InfoPlistKeys: String, Codable, CaseIterable, CustomStringConvertibl
     // Application supports iTunes file sharing iTunesファイル共有フラグ
     case fileSharingEnabled = "UIFileSharingEnabled"
 
-    // 画像をフォトライブラリに保存
+    // MARK: - フォトライブラリ
+
+    /// 画像をフォトライブラリに保存
     case photoLibraryAddUsageDescription = "NSPhotoLibraryAddUsageDescription"
 
-    // フォトライブラリの利用
+    /// フォトライブラリの利用
     case photoLibraryUsageDescription = "NSPhotoLibraryUsageDescription"
 
-    // 音声認識利用
+    // MARK: - 音声認識
+
+    /// 音声認識利用
     case speechRecognitionUsageDescription = "NSSpeechRecognitionUsageDescription"
 
-    // 位置情報の利用 (常に許可)
-    case locationAlwaysUsageDescription = "NSLocationAlwaysUsageDescription"
+    // MARK: - 位置情報
 
-    // 位置情報の利用 (使用中のみ許可)
+    /// [iOS 14.0+] ユーザーの位置情報への一時的なアクセスを要求している理由を説明するメッセージのコレクション
+    case locationTemporaryUsageDescriptionDictionary = "NSLocationTemporaryUsageDescriptionDictionary"
+
+    /// [iOS 14.0+] デフォルトで位置精度の低下を要求するかどうかを示すブール値
+    case NSLocationDefaultAccuracyReduced = "NSLocationDefaultAccuracyReduced"
+
+    /// [iOS 11.0+] フォアグラウンドで動作しているときに、がユーザーの位置情報へのアクセスを要求している理由をユーザーに伝える (使用中のみ許可)
     case locationWhenInUseUsageDescription = "NSLocationWhenInUseUsageDescription"
 
-    // 位置情報の利用（両方)
+    /// [iOS 11.0+] ユーザーの位置情報へのアクセスを常時要求している理由を伝える
     // swiftlint:disable:next identifier_name
     case locationAlwaysAndWhenInUseUsageDescription = "NSLocationAlwaysAndWhenInUseUsageDescription"
 
-    // Bluetooth インターフェースの利用
+    /// [Deprecated] 位置情報へのアクセスを要求している理由を伝えるメッセージ
+    case locationUsageDescription = "NSLocationUsageDescription"
+
+    /// [Deprecated] 位置情報の利用 (常に許可)
+    case locationAlwaysUsageDescription = "NSLocationAlwaysUsageDescription"
+
+    // MARK: - Bluetooth
+
+    /// Bluetooth インターフェースの利用
     case bluetoothPeripheralUsageDescription = "NSBluetoothPeripheralUsageDescription"
 
-    // Bluetoothの利用
+    /// Bluetoothの利用
     case bluetoothAlwaysUsageDescription = "NSBluetoothAlwaysUsageDescription"
 
-    // カレンダーの利用
+    // MARK: - カレンダー
+
+    /// カレンダーの利用
     case calendarsUsageDescription = "NSCalendarsUsageDescription"
 
-    // リマインダーの利用
+    // MARK: - リマインダー
+
+    /// リマインダーの利用
     case remindersUsageDescription = "NSRemindersUsageDescription"
 
-    // カメラの利用
+    // MARK: - カメラ
+
+    /// カメラの利用
     case cameraUsageDescription = "NSCameraUsageDescription"
 
-    // マイクの利用
+    /// マイクの利用
     case microphoneUsageDescription = "NSMicrophoneUsageDescription"
 
-    // 連絡先の利用
+    /// 連絡先の利用
     case contactsUsageDescription = "NSContactsUsageDescription"
 
-    // ヘルスデータの利用（読み込み）
+    /// ヘルスデータの利用（読み込み）
     case healthShareUsageDescription = "NSHealthShareUsageDescription"
 
-    // ヘルスデータの更新（書き込み）
+    /// ヘルスデータの更新（書き込み）
     case healthUpdateUsageDescription = "NSHealthUpdateUsageDescription"
 
-    // HomeKit設定の利用
+    /// HomeKit設定の利用
     case homeKitUsageDescription = "NSHomeKitUsageDescription"
 
-    // Siriへユーザーデータ送信
+    /// Siriへユーザーデータ送信
     case siriUsageDescription = "NSSiriUsageDescription"
 
-    // メディアライブラリの利用
+    /// メディアライブラリの利用
     case appleMusicUsageDescription = "NSAppleMusicUsageDescription"
 
-    // 加速度計の利用
+    /// 加速度計の利用
     case motionUsageDescription = "NSMotionUsageDescription"
 
-    // FaceIDの利用
+    /// FaceIDの利用
     case faceIDUsageDescription = "NSFaceIDUsageDescription"
 
-    // ローカルネットワークの利用
+    /// ローカルネットワークの利用
     case localNetworkUsageDescription = "NSLocalNetworkUsageDescription"
 
-    // ボンジュールの利用
+    /// ボンジュールの利用
     case bonjourServices = "NSBonjourServices"
 
-    // 近接デバイスとの対話セッションを開始するためのユーザー許可の1回限りの要求。
+    /// 近接デバイスとの対話セッションを開始するためのユーザー許可の1回限りの要求。
     // ⚠️ Deprecated only for iOS 14
     // https://developer.apple.com/documentation/bundleresources/information_property_list/nsnearbyinteractionallowonceusagedescription
     case nearbyInteractionAllowOnceUsageDescription = "NSNearbyInteractionAllowOnceUsageDescription"
 
-    // 近接デバイスとの対話セッションを開始するためのユーザー許可の要求。
+    /// 近接デバイスとの対話セッションを開始するためのユーザー許可の要求。
     // After iOS15
     // https://developer.apple.com/documentation/bundleresources/information_property_list/nsnearbyinteractionusagedescription
     case nearbyInteractionUsageDescription = "NSNearbyInteractionUsageDescription"
@@ -132,11 +155,27 @@ public enum InfoPlistKeys: String, Codable, CaseIterable, CustomStringConvertibl
         return self.rawValue
     }
 
+    // MARK: - public
+
     public func check() -> Bool {
         let result = Bundle.main.object(forInfoDictionaryKey: self.description)
         return result != nil
     }
 
+    /// 文字列として要素を取得する
+    /// - Returns: 文字列
+    public func getAsString() -> String? {
+        let result = Bundle.main.object(forInfoDictionaryKey: self.description) as? String
+        return result
+    }
+
+    /// 文字列配列として要素を取得する
+    public func getAsDictionary() -> [[String: Any]]? {
+        let result = Bundle.main.object(forInfoDictionaryKey: self.description) as? [[String: Any]]
+        return result
+    }
+
+    /// 型推論によって要素を取得する
     public func getValue<T>() -> T? {
         let result = Bundle.main.object(forInfoDictionaryKey: self.description) as? T
         // let result = InfoPlistChecker.word(for: self)
@@ -162,3 +201,4 @@ public enum InfoPlistKeys: String, Codable, CaseIterable, CustomStringConvertibl
         }
     }
 }
+
