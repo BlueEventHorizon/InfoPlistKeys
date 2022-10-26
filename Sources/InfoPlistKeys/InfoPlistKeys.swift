@@ -12,18 +12,23 @@ import Foundation
 
 public enum InfoPlistKeys: String, Codable, CaseIterable, CustomStringConvertible {
     // Bundle Identifier
+    // https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundleidentifier
     case identifier = "CFBundleIdentifier"
 
     // アプリ名
+    // https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundlename
     case name = "CFBundleName"
 
     // ローカル・アプリ名
+    // https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundledisplayname
     case displayName = "CFBundleDisplayName"
 
     // バージョン
+    // https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundleshortversionstring
     case shortVersion = "CFBundleShortVersionString"
 
     // Buildバージョン
+    // https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundleversion
     case version = "CFBundleVersion"
 
     // The system uses this key as the language if it can't locate a resource for the user’s preferred language.
@@ -152,37 +157,37 @@ public enum InfoPlistKeys: String, Codable, CaseIterable, CustomStringConvertibl
     // MARK: - CustomStringConvertible
 
     public var description: String {
-        return self.rawValue
+        return rawValue
     }
 
     // MARK: - public
 
     public func check() -> Bool {
-        let result = Bundle.main.object(forInfoDictionaryKey: self.description)
+        let result = Bundle.main.object(forInfoDictionaryKey: description)
         return result != nil
     }
 
     /// 文字列として要素を取得する
     /// - Returns: 文字列
     public func getAsString() -> String? {
-        let result = Bundle.main.object(forInfoDictionaryKey: self.description) as? String
+        let result = Bundle.main.object(forInfoDictionaryKey: description) as? String
         return result
     }
 
     /// 文字列配列として要素を取得する
-    public func getAsDictionary() -> [[String: Any]]? {
-        let result = Bundle.main.object(forInfoDictionaryKey: self.description) as? [[String: Any]]
+    public func getAsDictionary() -> [String: String]? {
+        let result = Bundle.main.object(forInfoDictionaryKey: description) as? [String: String]
         return result
     }
 
     /// 型推論によって要素を取得する
     public func getValue<T>() -> T? {
-        let result = Bundle.main.object(forInfoDictionaryKey: self.description) as? T
+        let result = Bundle.main.object(forInfoDictionaryKey: description) as? T
         // let result = InfoPlistChecker.word(for: self)
 
         switch self {
             case .URLTypes:
-                guard result is [[String: Any]]? else {
+                guard result is [String: String]? else {
                     assertionFailure("型が違います")
                     return result
                 }
